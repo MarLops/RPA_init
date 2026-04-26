@@ -19,7 +19,7 @@ LogUpperCase
 
 *** Variables ***
 #    Create variables
-${test_variable}    'test_variable'
+${test_variable}=    'test_variable'
 
 
 *** Tasks ***

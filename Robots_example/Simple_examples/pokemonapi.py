@@ -1,5 +1,7 @@
 import requests
+from robot.api.deco import keyword, not_keyword
 
+@keyword('Get Pokemon',types={'id': str})
 def get_pokemon(id:str):
     """
     Get pokemon
