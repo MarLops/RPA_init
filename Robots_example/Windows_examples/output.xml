@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-04-21T21:40:20.172718" rpa="true" schemaversion="5">
+<suite id="s1" name="Steam2" source="C:\Users\USER\Documents\Projects\RPA_init\Robots_example\Windows_examples\Steam2.robot">
+<test id="s1-t1" name="Use Notepad" line="8">
+<kw name="Windows Search" owner="RPA.Windows">
+<msg time="2026-04-21T21:40:20.607965" level="INFO">Sending keys '{Win}s' to element: &lt;module 'uiautomation' from 'C:\\Users\\USER\\Documents\\Projects\\RPA_init\\.venv\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg time="2026-04-21T21:40:21.154484" level="INFO">Sending keys 'stea' to element: &lt;module 'uiautomation' from 'C:\\Users\\USER\\Documents\\Projects\\RPA_init\\.venv\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg time="2026-04-21T21:40:21.707745" level="INFO">Sending keys '{Enter}' to element: &lt;module 'uiautomation' from 'C:\\Users\\USER\\Documents\\Projects\\RPA_init\\.venv\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg time="2026-04-21T21:40:25.234916" level="INFO">${app} = None</msg>
+<var>${app}</var>
+<arg>stea</arg>
+<tag>window</tag>
+<doc>Use Windows search window to launch application.</doc>
+<status status="PASS" start="2026-04-21T21:40:20.607643" elapsed="4.627330"/>
+</kw>
+<kw name="Log Many" owner="BuiltIn">
+<msg time="2026-04-21T21:40:25.236062" level="INFO">None</msg>
+<arg>${app}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<status status="PASS" start="2026-04-21T21:40:25.235649" elapsed="0.000474"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-21T21:40:28.237449" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-21T21:40:25.236486" elapsed="3.001085"/>
+</kw>
+<kw name="Send Keys" owner="RPA.Windows">
+<msg time="2026-04-21T21:40:28.238865" level="INFO">Getting element with locator: {PGDN}</msg>
+<msg time="2026-04-21T21:40:28.567580" level="INFO">Resulted root element: WindowsElement(name='Área de Trabalho 1', type='PaneControl', class='#32769')</msg>
+<msg time="2026-04-21T21:40:28.567901" level="INFO">Locator '{PGDN}' produced matcher: MatchObject(locators=[('Name', '{PGDN}', 0)], _classes=set(), max_level=0)</msg>
+<msg time="2026-04-21T21:40:38.981898" level="INFO">2026-04-21 21:40:38.981 locators.py[367] _get_control_from_params -&gt; Find Control Timeout(10s): {Name: '{PGDN}'}</msg>
+<msg time="2026-04-21T21:40:38.982072" level="FAIL">ElementNotFound: Element not found with locator '{PGDN}'</msg>
+<arg>{PGDN}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="FAIL" start="2026-04-21T21:40:28.238173" elapsed="10.749850">ElementNotFound: Element not found with locator '{PGDN}'</status>
+</kw>
+<kw name="Get Element" owner="RPA.Windows">
+<var>${store}</var>
+<arg>name:STORE</arg>
+<doc>Get a Control Windows element defined by the locator.</doc>
+<status status="NOT RUN" start="2026-04-21T21:40:38.988624" elapsed="0.000072"/>
+</kw>
+<kw name="Click" owner="RPA.Windows">
+<arg>${store}</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<status status="NOT RUN" start="2026-04-21T21:40:38.988955" elapsed="0.000028"/>
+</kw>
+<status status="FAIL" start="2026-04-21T21:40:20.606317" elapsed="18.383010">ElementNotFound: Element not found with locator '{PGDN}'</status>
+</test>
+<status status="FAIL" start="2026-04-21T21:40:20.174766" elapsed="18.818185"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Steam2" id="s1" pass="0" fail="1" skip="0">Steam2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
