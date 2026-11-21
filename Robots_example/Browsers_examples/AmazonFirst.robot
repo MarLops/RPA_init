@@ -3,15 +3,18 @@ Library    Browser
 Library    OperatingSystem
 
 
-*** Variables ***
-#${SEARCH_TERM}    laptop
-
 *** Tasks ***
 Open Amazon and Search
-    New Browser    chromium    headless=False 
+    New Browser    firefox    headless=False 
     New Page    https://www.amazon.com/
-    Sleep    5 seconds
+    Sleep    10 seconds
     Wait For Load State
+    ${continue_button}=    Get Element Count    text=Continue to shopping
+    IF    ${continue_button} > 0
+        Click    text=Continue to shopping
+        Wait For Load State
+        Sleep    5 seconds
+    END
     Fill Text    id=twotabsearchtextbox    laptop
     Press Keys    id=twotabsearchtextbox    Enter
     Wait For Load State

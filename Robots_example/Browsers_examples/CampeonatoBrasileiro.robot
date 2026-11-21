@@ -4,7 +4,7 @@ Library    Browser
 Library    DatabaseLibrary
 Library    Collections
 Library    brasileiraoutil.py    WITH NAME    BrasileiraoUtil
-Suite Setup     New Browser    chromium    headless=False 
+Suite Setup     New Browser    firefox    headless=False 
 Suite Teardown    Close Browser
 
 

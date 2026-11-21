@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.10 on win32)" generated="2026-11-21T11:50:56.641649" rpa="true" schemaversion="5">
+<suite id="s1" name="FifthExample" source="C:\Users\User\Documents\Pessoal\RPA_init\Robots_example\Simple_examples\FifthExample.robot">
+<test id="s1-t1" name="Get Pokemon" line="12">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.341014" level="INFO">${url} = https://pokeapi.co/api/v2/pokemon/25</msg>
+<var>${url}</var>
+<arg>${url_base}${pokemon_number}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.339412" elapsed="0.001689"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-11-21T11:50:57.504766" level="INFO">GET Request : url=https://pokeapi.co/api/v2/pokemon/25 
+ path_url=/api/v2/pokemon/25 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-11-21T11:50:57.505590" level="INFO">GET Response : url=https://pokeapi.co/api/v2/pokemon/25 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 21 Nov 2026 11:50:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'access-control-expose-headers': 'X-PokeAPI-Hash,X-PokeAPI-Deploy-Date', 'Cache-Control': 'public, max-age=86400, s-maxage=86400', 'Age': '53315', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=guxJqiB2HENuQdiE2uqbeJ0eYuyPmDZyoQ4LKuvH8ba%2FbsVfoR8iPT5E%2Ffp91EQZGJb5vMBUnfzfzN8SFlMpv28AmorpsJ4uUY5Dn9lkXO9%2FiKpt2Q63uc%2FKrGyT0Ujrykd1E8qwAqjE"}]}', 'etag': 'W/"55a56-smSlUnxoH04JU4zkljuhNam2GLA"', 'function-execution-id': 'sq8nf8biekpw', 'Server': 'cloudflare', 'strict-transport-security': 'max-age=31556926', 'x-cloud-trace-context': 'ab2fd5c30c02aef80c620547a3401049', 'x-country-code': 'US', 'x-orig-accept-language': 'ja,en;q=0.9,en-GB;q=0.8,en-US;q=0.7', 'x-pokeapi-deploy-date': '1794994134', 'x-pokeapi-hash': 'e98f2ad82fc61c46036689ecb10c3aa89d562d6b', 'x-powered-by': 'Express', 'x-served-by': 'cache-chi-klot8100075-CHI', 'x-cache': 'HIT', 'x-cache-hits': '0', 'x-timer': 'S1795208534.744875,VS0,VE768', 'vary': 'Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding', 'alt-svc': 'h3=":443"; ma=86400', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'cf-cache-status': 'HIT', 'Content-Encoding': 'zstd', 'CF-RAY': 'a5df7aa37aa5fb78-GRU'} 
+ body={"id":25,"name":"pikachu","base_experience":112,"height":4,"is_default":true,"order":35,"weight":60,"abilities":[{"is_hidden":false,"slot":1,"ability":{"name":"static","url":"https://pokeapi.co/api/v2/ability/9/"}},{"is_hidden":true,"slot":3,"ability":{"name":"lightning-rod","url":"https://pokeapi.co/api/v2/ability/31/"}}],"past_abilities":[{"generation":{"name":"generation-iv","url":"https://pokeapi.co/api/v2/generation/4/"},"abilities":[{"is_hidden":true,"slot":3,"ability":null}]}],"forms":[{"name":"pikachu","url":"https://pokeapi.co/api/v2/pokemon-form/25/"}],"game_indices":[{"game_index":84,"version":{"name":"red","url":"https://pokeapi.co/api/v2/version/1/"}},{"game_index":84,"version":{"name":"blue","url":"https://pokeapi.co/api/v2/version/2/"}},{"game_index":84,"version":{"name":"yellow","url":"https://pokeapi.co/api/v2/version/3/"}},{"game_index":25,"version":{"name":"gold","url":"https://pokeapi.co/api/v2/version/4/"}},{"game_index":25,"version":{"name":"silver","url":"https://pokeapi.co/api/v2/version/5/"}},{"game_index":25,"version":{"name":"crystal","url":"https://pokeapi.co/api/v2/version/6/"}},{"game_index":25,"version":{"name":"ruby","url":"https://pokeapi.co/api/v2/version/7/"}},{"game_index":25,"version":{"name":"sapphire","url":"https://pokeapi.co/api/v2/version/8/"}},{"game_index":25,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version/9/"}},{"game_index":25,"version":{"name":"firered","url":"https://pokeapi.co/api/v2/version/10/"}},{"game_index":25,"version":{"name":"leafgreen","url":"https://pokeapi.co/api/v2/version/11/"}},{"game_index":25,"version":{"name":"diamond","url":"https://pokeapi.co/api/v2/version/12/"}},{"game_index":25,"version":{"name":"pearl","url":"https://pokeapi.co/api/v2/version/13/"}},{"game_index":25,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version/14/"}},{"game_index":25,"version":{"name":"heartgold","url":"https://pokeapi.co/api/v2/version/15/"}},{"game_index":25,"version":{"name":"soulsilver","url":"https://pokeapi.co/api/v2/version/16/"}},{"game_index":25,"version":{"name":"black","url":"https://pokeapi.co/api/v2/version/17/"}},{"game_index":25,"version":{"name":"white","url":"https://pokeapi.co/api/v2/version/18/"}},{"game_index":25,"version":{"name":"black-2","url":"https://pokeapi.co/api/v2/version/21/"}},{"game_index":25,"version":{"name":"white-2","url":"https://pokeapi.co/api/v2/version/22/"}},{"game_index":25,"version":{"name":"x","url":"https://pokeapi.co/api/v2/version/23/"}},{"game_index":25,"version":{"name":"y","url":"https://pokeapi.co/api/v2/version/24/"}},{"game_index":25,"version":{"name":"omega-ruby","url":"https://pokeapi.co/api/v2/version/25/"}},{"game_index":25,"version":{"name":"alpha-sapphire","url":"https://pokeapi.co/api/v2/version/26/"}},{"game_index":25,"version":{"name":"sun","url":"https://pokeapi.co/api/v2/version/27/"}},{"game_index":25,"version":{"name":"moon","url":"https://pokeapi.co/api/v2/version/28/"}},{"game_index":25,"version":{"name":"ultra-sun","url":"https://pokeapi.co/api/v2/version/29/"}},{"game_index":25,"version":{"name":"ultra-moon","url":"https://pokeapi.co/api/v2/version/30/"}},{"game_index":25,"version":{"name":"lets-go-pikachu","url":"https://pokeapi.co/api/v2/version/31/"}},{"game_index":25,"version":{"name":"lets-go-eevee","url":"https://pokeapi.co/api/v2/version/32/"}},{"game_index":25,"version":{"name":"sword","url":"https://pokeapi.co/api/v2/version/33/"}},{"game_index":25,"version":{"name":"shield","url":"https://pokeapi.co/api/v2/version/34/"}},{"game_index":25,"version":{"name":"the-isle-of-armor-sword","url":"https://pokeapi.co/api/v2/version/35/"}},{"game_index":25,"version":{"name":"the-crown-tundra-sword","url":"https://pokeapi.co/api/v2/version/36/"}},{"game_index":25,"version":{"name":"brilliant-diamond","url":"https://pokeapi.co/api/v2/version/37/"}},{"game_index":25,"version":{"name":"shining-pearl","url":"https://pokeapi.co/api/v2/version/38/"}},{"game_index":25,"version":{"name":"legends-arceus","url":"https://pokeapi.co/api/v2/version/39/"}},{"game_index":25,"version":{"name":"scarlet","url":"https://pokeapi.co/api/v2/version/40/"}},{"game_index":25,"version":{"name":"violet","url":"https://pokeapi.co/api/v2/version/41/"}},{"game_index":25,"version":{"name":"the-teal-mask-scarlet","url":"https://pokeapi.co/api/v2/version/42/"}},{"game_index":25,"version":{"name":"the-indigo-disk-scarlet","url":"https://pokeapi.co/api/v2/version/43/"}},{"game_index":84,"version":{"name":"red-japan","url":"https://pokeapi.co/api/v2/version/44/"}},{"game_index":84,"version":{"name":"green-japan","url":"https://pokeapi.co/api/v2/version/45/"}},{"game_index":84,"version":{"name":"blue-japan","url":"https://pokeapi.co/api/v2/version/46/"}},{"game_index":25,"version":{"name":"legends-za","url":"https://pokeapi.co/api/v2/version/47/"}},{"game_index":25,"version":{"name":"mega-dimension","url":"https://pokeapi.co/api/v2/version/48/"}}],"held_items":[{"item":{"name":"oran-berry","url":"https://pokeapi.co/api/v2/item/132/"},"version_details":[{"rarity":50,"version":{"name":"ruby","url":"https://pokeapi.co/api/v2/version/7/"}},{"rarity":50,"version":{"name":"sapphire","url":"https://pokeapi.co/api/v2/version/8/"}},{"rarity":50,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version/9/"}},{"rarity":50,"version":{"name":"diamond","url":"https://pokeapi.co/api/v2/version/12/"}},{"rarity":50,"version":{"name":"pearl","url":"https://pokeapi.co/api/v2/version/13/"}},{"rarity":50,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version/14/"}},{"rarity":50,"version":{"name":"heartgold","url":"https://pokeapi.co/api/v2/version/15/"}},{"rarity":50,"version":{"name":"soulsilver","url":"https://pokeapi.co/api/v2/version/16/"}},{"rarity":50,"version":{"name":"black","url":"https://pokeapi.co/api/v2/version/17/"}},{"rarity":50,"version":{"name":"white","url":"https://pokeapi.co/api/v2/version/18/"}}]},{"item":{"name":"light-ball","url":"https://pokeapi.co/api/v2/item/213/"},"version_details":[{"rarity":5,"version":{"name":"ruby","url":"https://pokeapi.co/api/v2/version/7/"}},{"rarity":5,"version":{"name":"sapphire","url":"https://pokeapi.co/api/v2/version/8/"}},{"rarity":5,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version/9/"}},{"rarity":5,"version":{"name":"diamond","url":"https://pokeapi.co/api/v2/version/12/"}},{"rarity":5,"version":{"name":"pearl","url":"https://pokeapi.co/api/v2/version/13/"}},{"rarity":5,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version/14/"}},{"rarity":5,"version":{"name":"heartgold","url":"https://pokeapi.co/api/v2/version/15/"}},{"rarity":5,"version":{"name":"soulsilver","url":"https://pokeapi.co/api/v2/version/16/"}},{"rarity":1,"version":{"name":"black","url":"https://pokeapi.co/api/v2/version/17/"}},{"rarity":1,"version":{"name":"white","url":"https://pokeapi.co/api/v2/version/18/"}},{"rarity":5,"version":{"name":"black-2","url":"https://pokeapi.co/api/v2/version/21/"}},{"rarity":5,"version":{"name":"white-2","url":"https://pokeapi.co/api/v2/version/22/"}},{"rarity":5,"version":{"name":"x","url":"https://pokeapi.co/api/v2/version/23/"}},{"rarity":5,"version":{"name":"y","url":"https://pokeapi.co/api/v2/version/24/"}},{"rarity":5,"version":{"name":"omega-ruby","url":"https://pokeapi.co/api/v2/version/25/"}},{"rarity":5,"version":{"name":"alpha-sapphire","url":"https://pokeapi.co/api/v2/version/26/"}},{"rarity":5,"version":{"name":"sun","url":"https://pokeapi.co/api/v2/version/27/"}},{"rarity":5,"version":{"name":"moon","url":"https://pokeapi.co/api/v2/version/28/"}},{"rarity":5,"version":{"name":"ultra-sun","url":"https://pokeapi.co/api/v2/version/29/"}},{"rarity":5,"version":{"name":"ultra-moon","url":"https://pokeapi.co/api/v2/version/30/"}}]}],"location_area_encounters":"https://pokeapi.co/api/v2/pokemon/25/encounters","moves":[{"move":{"name":"mega-punch","url":"https://pokeapi.co/api/v2/move/5/"},"version_group_details":[{"level_learned_at":0,"version_group":{"name":"red-blue","url":"https://pokeapi.co/api/v2/version-group/1/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"yellow","url":"https://pokeapi.co/api/v2/version-group/2/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"emerald","url":"https://pokeapi.co/api/v2/version-group/6/"},"move_learn_method":{"name":"tutor","url":"https://pokeapi.co/api/v2/move-learn-method/3/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"firered-leafgreen","url":"https://pokeapi.co/api/v2/version-group/7/"},"move_learn_method":{"name":"tutor","url":"https://pokeapi.co/api/v2/move-learn-method/3/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"sword-shield","url":"https://pokeapi.co/api/v2/version-group/20/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"red-green-japan","url":"https://pokeapi.co/api/v2/version-group/28/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"blue-japan","url":"https://pokeapi.co/api/v2/version-group/29/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null}]},{"move":{"name":"pay-day","url":"https://pokeapi.co/api/v2/move/6/"},"version_group_details":[{"level_learned_at":0,"version_group":{"name":"red-blue","url":"https://pokeapi.co/api/v2/version-group/1/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg time="2026-11-21T11:50:57.506300" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${url}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.341660" elapsed="0.164733"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.510837" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.507361" elapsed="0.003811"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.534501" level="INFO">${json} = {'id': 25, 'name': 'pikachu', 'base_experience': 112, 'height': 4, 'is_default': True, 'order': 35, 'weight': 60, 'abilities': [{'is_hidden': False, 'slot': 1, 'ability': {'name': 'static', 'url': 'ht...</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.511989" elapsed="0.022598"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.535586" elapsed="0.000267"/>
+</kw>
+<msg time="2026-11-21T11:50:57.536061" level="INFO">${has_key_name} = True</msg>
+<var>${has_key_name}</var>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${json}</arg>
+<arg>name</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.534983" elapsed="0.001131"/>
+</kw>
+<if>
+<branch type="IF" condition="${has_key_name}">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:50:57.537674" level="INFO">${name} = pikachu</msg>
+<var>${name}</var>
+<arg>${json}</arg>
+<arg>name</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.537243" elapsed="0.000517"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Nome do Pokemon: ${name}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.538000" elapsed="0.001164"/>
+</kw>
+<status status="PASS" start="2026-11-21T11:50:57.536896" elapsed="0.002379"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" owner="BuiltIn">
+<arg>Chave 'name' não encontrada</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-11-21T11:50:57.539598" elapsed="0.000046"/>
+</kw>
+<status status="NOT RUN" start="2026-11-21T11:50:57.539361" elapsed="0.000365"/>
+</branch>
+<status status="PASS" start="2026-11-21T11:50:57.536827" elapsed="0.002962"/>
+</if>
+<status status="PASS" start="2026-11-21T11:50:57.336905" elapsed="0.203291"/>
+</test>
+<test id="s1-t2" name="Get Pokemon Fail" line="36">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.543399" level="INFO">${url} = https://pokeapi.co/api/v2/pokemon/25</msg>
+<var>${url}</var>
+<arg>${url_base}${pokemon_number}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.542200" elapsed="0.001252"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-11-21T11:50:57.680049" level="INFO">GET Request : url=https://pokeapi.co/api/v2/pokemon/25 
+ path_url=/api/v2/pokemon/25 
+ headers={'User-Agent': 'python-requests/2.33.1', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-11-21T11:50:57.681189" level="INFO">GET Response : url=https://pokeapi.co/api/v2/pokemon/25 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 21 Nov 2026 11:50:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'access-control-expose-headers': 'X-PokeAPI-Hash,X-PokeAPI-Deploy-Date', 'Cache-Control': 'public, max-age=86400, s-maxage=86400', 'Age': '53315', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VmoN%2Fwwj9H9YIIM6cJ0iUrWiflMeZUbPorSpo7Wte8O2dCVle27sDCfz6r4tRJ9EWWotL%2BkW1kvEZaqErJ23uRrnuMyH4V4TDAgeNaTYDq99%2B3KUnWEDRxxMDRXYnB4nA0mYCYu42s9g"}]}', 'etag': 'W/"55a56-smSlUnxoH04JU4zkljuhNam2GLA"', 'function-execution-id': 'sq8nf8biekpw', 'Server': 'cloudflare', 'strict-transport-security': 'max-age=31556926', 'x-cloud-trace-context': 'ab2fd5c30c02aef80c620547a3401049', 'x-country-code': 'US', 'x-orig-accept-language': 'ja,en;q=0.9,en-GB;q=0.8,en-US;q=0.7', 'x-pokeapi-deploy-date': '1794994134', 'x-pokeapi-hash': 'e98f2ad82fc61c46036689ecb10c3aa89d562d6b', 'x-powered-by': 'Express', 'x-served-by': 'cache-chi-klot8100075-CHI', 'x-cache': 'HIT', 'x-cache-hits': '0', 'x-timer': 'S1795208534.744875,VS0,VE768', 'vary': 'Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding', 'alt-svc': 'h3=":443"; ma=86400', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'cf-cache-status': 'HIT', 'Content-Encoding': 'zstd', 'CF-RAY': 'a5df7aa48f6df1f7-GRU'} 
+ body={"id":25,"name":"pikachu","base_experience":112,"height":4,"is_default":true,"order":35,"weight":60,"abilities":[{"is_hidden":false,"slot":1,"ability":{"name":"static","url":"https://pokeapi.co/api/v2/ability/9/"}},{"is_hidden":true,"slot":3,"ability":{"name":"lightning-rod","url":"https://pokeapi.co/api/v2/ability/31/"}}],"past_abilities":[{"generation":{"name":"generation-iv","url":"https://pokeapi.co/api/v2/generation/4/"},"abilities":[{"is_hidden":true,"slot":3,"ability":null}]}],"forms":[{"name":"pikachu","url":"https://pokeapi.co/api/v2/pokemon-form/25/"}],"game_indices":[{"game_index":84,"version":{"name":"red","url":"https://pokeapi.co/api/v2/version/1/"}},{"game_index":84,"version":{"name":"blue","url":"https://pokeapi.co/api/v2/version/2/"}},{"game_index":84,"version":{"name":"yellow","url":"https://pokeapi.co/api/v2/version/3/"}},{"game_index":25,"version":{"name":"gold","url":"https://pokeapi.co/api/v2/version/4/"}},{"game_index":25,"version":{"name":"silver","url":"https://pokeapi.co/api/v2/version/5/"}},{"game_index":25,"version":{"name":"crystal","url":"https://pokeapi.co/api/v2/version/6/"}},{"game_index":25,"version":{"name":"ruby","url":"https://pokeapi.co/api/v2/version/7/"}},{"game_index":25,"version":{"name":"sapphire","url":"https://pokeapi.co/api/v2/version/8/"}},{"game_index":25,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version/9/"}},{"game_index":25,"version":{"name":"firered","url":"https://pokeapi.co/api/v2/version/10/"}},{"game_index":25,"version":{"name":"leafgreen","url":"https://pokeapi.co/api/v2/version/11/"}},{"game_index":25,"version":{"name":"diamond","url":"https://pokeapi.co/api/v2/version/12/"}},{"game_index":25,"version":{"name":"pearl","url":"https://pokeapi.co/api/v2/version/13/"}},{"game_index":25,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version/14/"}},{"game_index":25,"version":{"name":"heartgold","url":"https://pokeapi.co/api/v2/version/15/"}},{"game_index":25,"version":{"name":"soulsilver","url":"https://pokeapi.co/api/v2/version/16/"}},{"game_index":25,"version":{"name":"black","url":"https://pokeapi.co/api/v2/version/17/"}},{"game_index":25,"version":{"name":"white","url":"https://pokeapi.co/api/v2/version/18/"}},{"game_index":25,"version":{"name":"black-2","url":"https://pokeapi.co/api/v2/version/21/"}},{"game_index":25,"version":{"name":"white-2","url":"https://pokeapi.co/api/v2/version/22/"}},{"game_index":25,"version":{"name":"x","url":"https://pokeapi.co/api/v2/version/23/"}},{"game_index":25,"version":{"name":"y","url":"https://pokeapi.co/api/v2/version/24/"}},{"game_index":25,"version":{"name":"omega-ruby","url":"https://pokeapi.co/api/v2/version/25/"}},{"game_index":25,"version":{"name":"alpha-sapphire","url":"https://pokeapi.co/api/v2/version/26/"}},{"game_index":25,"version":{"name":"sun","url":"https://pokeapi.co/api/v2/version/27/"}},{"game_index":25,"version":{"name":"moon","url":"https://pokeapi.co/api/v2/version/28/"}},{"game_index":25,"version":{"name":"ultra-sun","url":"https://pokeapi.co/api/v2/version/29/"}},{"game_index":25,"version":{"name":"ultra-moon","url":"https://pokeapi.co/api/v2/version/30/"}},{"game_index":25,"version":{"name":"lets-go-pikachu","url":"https://pokeapi.co/api/v2/version/31/"}},{"game_index":25,"version":{"name":"lets-go-eevee","url":"https://pokeapi.co/api/v2/version/32/"}},{"game_index":25,"version":{"name":"sword","url":"https://pokeapi.co/api/v2/version/33/"}},{"game_index":25,"version":{"name":"shield","url":"https://pokeapi.co/api/v2/version/34/"}},{"game_index":25,"version":{"name":"the-isle-of-armor-sword","url":"https://pokeapi.co/api/v2/version/35/"}},{"game_index":25,"version":{"name":"the-crown-tundra-sword","url":"https://pokeapi.co/api/v2/version/36/"}},{"game_index":25,"version":{"name":"brilliant-diamond","url":"https://pokeapi.co/api/v2/version/37/"}},{"game_index":25,"version":{"name":"shining-pearl","url":"https://pokeapi.co/api/v2/version/38/"}},{"game_index":25,"version":{"name":"legends-arceus","url":"https://pokeapi.co/api/v2/version/39/"}},{"game_index":25,"version":{"name":"scarlet","url":"https://pokeapi.co/api/v2/version/40/"}},{"game_index":25,"version":{"name":"violet","url":"https://pokeapi.co/api/v2/version/41/"}},{"game_index":25,"version":{"name":"the-teal-mask-scarlet","url":"https://pokeapi.co/api/v2/version/42/"}},{"game_index":25,"version":{"name":"the-indigo-disk-scarlet","url":"https://pokeapi.co/api/v2/version/43/"}},{"game_index":84,"version":{"name":"red-japan","url":"https://pokeapi.co/api/v2/version/44/"}},{"game_index":84,"version":{"name":"green-japan","url":"https://pokeapi.co/api/v2/version/45/"}},{"game_index":84,"version":{"name":"blue-japan","url":"https://pokeapi.co/api/v2/version/46/"}},{"game_index":25,"version":{"name":"legends-za","url":"https://pokeapi.co/api/v2/version/47/"}},{"game_index":25,"version":{"name":"mega-dimension","url":"https://pokeapi.co/api/v2/version/48/"}}],"held_items":[{"item":{"name":"oran-berry","url":"https://pokeapi.co/api/v2/item/132/"},"version_details":[{"rarity":50,"version":{"name":"ruby","url":"https://pokeapi.co/api/v2/version/7/"}},{"rarity":50,"version":{"name":"sapphire","url":"https://pokeapi.co/api/v2/version/8/"}},{"rarity":50,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version/9/"}},{"rarity":50,"version":{"name":"diamond","url":"https://pokeapi.co/api/v2/version/12/"}},{"rarity":50,"version":{"name":"pearl","url":"https://pokeapi.co/api/v2/version/13/"}},{"rarity":50,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version/14/"}},{"rarity":50,"version":{"name":"heartgold","url":"https://pokeapi.co/api/v2/version/15/"}},{"rarity":50,"version":{"name":"soulsilver","url":"https://pokeapi.co/api/v2/version/16/"}},{"rarity":50,"version":{"name":"black","url":"https://pokeapi.co/api/v2/version/17/"}},{"rarity":50,"version":{"name":"white","url":"https://pokeapi.co/api/v2/version/18/"}}]},{"item":{"name":"light-ball","url":"https://pokeapi.co/api/v2/item/213/"},"version_details":[{"rarity":5,"version":{"name":"ruby","url":"https://pokeapi.co/api/v2/version/7/"}},{"rarity":5,"version":{"name":"sapphire","url":"https://pokeapi.co/api/v2/version/8/"}},{"rarity":5,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version/9/"}},{"rarity":5,"version":{"name":"diamond","url":"https://pokeapi.co/api/v2/version/12/"}},{"rarity":5,"version":{"name":"pearl","url":"https://pokeapi.co/api/v2/version/13/"}},{"rarity":5,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version/14/"}},{"rarity":5,"version":{"name":"heartgold","url":"https://pokeapi.co/api/v2/version/15/"}},{"rarity":5,"version":{"name":"soulsilver","url":"https://pokeapi.co/api/v2/version/16/"}},{"rarity":1,"version":{"name":"black","url":"https://pokeapi.co/api/v2/version/17/"}},{"rarity":1,"version":{"name":"white","url":"https://pokeapi.co/api/v2/version/18/"}},{"rarity":5,"version":{"name":"black-2","url":"https://pokeapi.co/api/v2/version/21/"}},{"rarity":5,"version":{"name":"white-2","url":"https://pokeapi.co/api/v2/version/22/"}},{"rarity":5,"version":{"name":"x","url":"https://pokeapi.co/api/v2/version/23/"}},{"rarity":5,"version":{"name":"y","url":"https://pokeapi.co/api/v2/version/24/"}},{"rarity":5,"version":{"name":"omega-ruby","url":"https://pokeapi.co/api/v2/version/25/"}},{"rarity":5,"version":{"name":"alpha-sapphire","url":"https://pokeapi.co/api/v2/version/26/"}},{"rarity":5,"version":{"name":"sun","url":"https://pokeapi.co/api/v2/version/27/"}},{"rarity":5,"version":{"name":"moon","url":"https://pokeapi.co/api/v2/version/28/"}},{"rarity":5,"version":{"name":"ultra-sun","url":"https://pokeapi.co/api/v2/version/29/"}},{"rarity":5,"version":{"name":"ultra-moon","url":"https://pokeapi.co/api/v2/version/30/"}}]}],"location_area_encounters":"https://pokeapi.co/api/v2/pokemon/25/encounters","moves":[{"move":{"name":"mega-punch","url":"https://pokeapi.co/api/v2/move/5/"},"version_group_details":[{"level_learned_at":0,"version_group":{"name":"red-blue","url":"https://pokeapi.co/api/v2/version-group/1/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"yellow","url":"https://pokeapi.co/api/v2/version-group/2/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"emerald","url":"https://pokeapi.co/api/v2/version-group/6/"},"move_learn_method":{"name":"tutor","url":"https://pokeapi.co/api/v2/move-learn-method/3/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"firered-leafgreen","url":"https://pokeapi.co/api/v2/version-group/7/"},"move_learn_method":{"name":"tutor","url":"https://pokeapi.co/api/v2/move-learn-method/3/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"sword-shield","url":"https://pokeapi.co/api/v2/version-group/20/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"red-green-japan","url":"https://pokeapi.co/api/v2/version-group/28/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null},{"level_learned_at":0,"version_group":{"name":"blue-japan","url":"https://pokeapi.co/api/v2/version-group/29/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,"enhancement_level":null}]},{"move":{"name":"pay-day","url":"https://pokeapi.co/api/v2/move/6/"},"version_group_details":[{"level_learned_at":0,"version_group":{"name":"red-blue","url":"https://pokeapi.co/api/v2/version-group/1/"},"move_learn_method":{"name":"machine","url":"https://pokeapi.co/api/v2/move-learn-method/4/"},"order":null,... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg time="2026-11-21T11:50:57.682102" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${url}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.543967" elapsed="0.138255"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.686463" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.683507" elapsed="0.003256"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.721333" level="INFO">${json} = {'id': 25, 'name': 'pikachu', 'base_experience': 112, 'height': 4, 'is_default': True, 'order': 35, 'weight': 60, 'abilities': [{'is_hidden': False, 'slot': 1, 'ability': {'name': 'static', 'url': 'ht...</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.687799" elapsed="0.033666"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.723523" elapsed="0.000591"/>
+</kw>
+<msg time="2026-11-21T11:50:57.724459" level="INFO">${has_key_name} = True</msg>
+<var>${has_key_name}</var>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${json}</arg>
+<arg>name</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.722138" elapsed="0.002404"/>
+</kw>
+<if>
+<branch type="IF" condition="${has_key_name}">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:50:57.726582" level="INFO">${name} = pikachu</msg>
+<var>${name}</var>
+<arg>${json}</arg>
+<arg>name</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:50:57.725954" elapsed="0.000719"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<msg time="2026-11-21T11:50:57.728311" level="FAIL">pikachu != bulbasaur</msg>
+<arg>${name}</arg>
+<arg>${name_pokemon}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="FAIL" start="2026-11-21T11:50:57.727058" elapsed="0.001700">pikachu != bulbasaur</status>
+</kw>
+<status status="FAIL" start="2026-11-21T11:50:57.725118" elapsed="0.003892">pikachu != bulbasaur</status>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" owner="BuiltIn">
+<arg>Chave 'name' não encontrada</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-11-21T11:50:57.729427" elapsed="0.000063"/>
+</kw>
+<status status="NOT RUN" start="2026-11-21T11:50:57.729123" elapsed="0.000483"/>
+</branch>
+<status status="FAIL" start="2026-11-21T11:50:57.725040" elapsed="0.004652">pikachu != bulbasaur</status>
+</if>
+<status status="FAIL" start="2026-11-21T11:50:57.540988" elapsed="0.189515">pikachu != bulbasaur</status>
+</test>
+<status status="FAIL" start="2026-11-21T11:50:56.644016" elapsed="1.088617"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="FifthExample" id="s1" pass="1" fail="1" skip="0">FifthExample</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

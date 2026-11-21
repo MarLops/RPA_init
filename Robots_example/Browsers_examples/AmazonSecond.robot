@@ -1,7 +1,7 @@
 *** Settings ***
 Library    Browser
 Library    OperatingSystem
-Suite Setup     New Browser    chromium    headless=False 
+Suite Setup     New Browser    firefox    headless=False 
 Suite Teardown    Close Browser
 
 

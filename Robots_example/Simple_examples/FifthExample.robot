@@ -3,9 +3,10 @@ Library    RequestsLibrary
 Library    Collections
 
 *** Variables ***
-#Run with variable robot --variable pokemon_number:25 test.robot
+#Run with variable robot --variable pokemon_number:25 name_pokemon:raichu test.robot
 ${url_base}         https://pokeapi.co/api/v2/pokemon/
 ${pokemon_number}   1
+${name_pokemon}    bulbasaur
 
 *** Tasks ***
 Get Pokemon
@@ -50,7 +51,7 @@ Get Pokemon Fail
 
     IF    ${has_key_name}
         ${name}=    Get From Dictionary    ${json}    name
-        Should Be Equal    ${name}    'bulbasauro'
+        Should Be Equal    ${name}    ${name_pokemon}
     ELSE
         Fail    Chave 'name' não encontrada
     END

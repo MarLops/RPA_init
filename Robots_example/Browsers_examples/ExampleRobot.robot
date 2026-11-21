@@ -3,7 +3,7 @@
 Library    Browser
 
 *** Variables ***
-${BROWSER}    chromium
+${BROWSER}    firefox
 ${HEADLESS}    false
 
 *** Test Cases ***

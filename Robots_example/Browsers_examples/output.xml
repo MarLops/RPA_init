@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.10 on win32)" generated="2026-11-21T11:45:48.608459" rpa="true" schemaversion="5">
+<suite id="s1" name="CampeonatoBrasileiro" source="C:\Users\User\Documents\Pessoal\RPA_init\Robots_example\Browsers_examples\CampeonatoBrasileiro.robot">
+<kw name="New Browser" owner="Browser" type="SETUP">
+<msg time="2026-11-21T11:45:49.536085" level="INFO">{"browser": "firefox", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\User\\Documents\\Pessoal\\RPA_init\\Robots_example\\Browsers_examples\\browser\\traces\\temp\\f6c2155c-9fcd-4401-9a06-7a9fe0118ddb"}</msg>
+<msg time="2026-11-21T11:45:49.537421" level="INFO">Starting GRPC process C:\Users\User\Documents\Pessoal\RPA_init\.venv\Lib\site-packages\BrowserBatteries\bin\grpc_server.exe using at 127.0.0.1:63086</msg>
+<msg time="2026-11-21T11:45:51.542656" level="INFO">Successfully created browser with options: {"browser":"firefox","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\User\\Documents\\Pessoal\\RPA_init\\Robots_example\\Browsers_examples\\browser\\traces\\temp\\f6c2155c-9fcd-4401-9a06-7a9fe0118ddb"}</msg>
+<arg>firefox</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-11-21T11:45:49.534907" elapsed="2.008077"/>
+</kw>
+<test id="s1-t1" name="Get Positions" line="40">
+<kw name="New Page" owner="Browser">
+<msg time="2026-11-21T11:45:57.890742" level="INFO">Successfully initialized new page object and opened url: https://ge.globo.com/futebol/brasileirao-serie-a/</msg>
+<msg time="2026-11-21T11:45:57.890894" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>url=https://ge.globo.com/futebol/brasileirao-serie-a/</arg>
+<arg>wait_until=domcontentloaded</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-11-21T11:45:51.563422" elapsed="6.327813"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-11-21T11:46:17.894588" level="INFO">Slept 20 seconds.</msg>
+<arg>time_=20</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-11-21T11:45:57.893150" elapsed="20.001663"/>
+</kw>
+<kw name="Get Page Source" owner="Browser">
+<msg time="2026-11-21T11:46:18.539564" level="INFO">${html} = &lt;!DOCTYPE html&gt;&lt;html lang="pt-BR" data-bs-channel="desktop" data-bs-tenant="ge" data-bs-content-api="tabela" data-bs-resource-id="d1a37fa4-e948-43a6-ba53-ab24ab3a45b1" class="bs-channel-desktop glb-th...</msg>
+<var>${html}</var>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Gets pages HTML source as a string.</doc>
+<status status="PASS" start="2026-11-21T11:46:17.895722" elapsed="0.644015"/>
+</kw>
+<kw name="Get Positions" owner="BrasileiraoUtil">
+<msg time="2026-11-21T11:46:18.906551" level="INFO">${response} = [{'posicao': '1', 'nome': 'Flamengo', 'pontos': '79', 'jogos': '35', 'vitoria': '24'}, {'posicao': '2', 'nome': 'Palmeiras', 'pontos': '73', 'jogos': '35', 'vitoria': '21'}, {'posicao': '3', 'nome': '...</msg>
+<var>${response}</var>
+<arg>html=${html}</arg>
+<status status="PASS" start="2026-11-21T11:46:18.540305" elapsed="0.366349"/>
+</kw>
+<kw name="Connect Open">
+<kw name="Connect To Database" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:18.908169" level="INFO">Looking for configuration file: 'resources\db.cfg'</msg>
+<msg time="2026-11-21T11:46:18.908262" level="INFO">Configuration file doesn't exist</msg>
+<msg time="2026-11-21T11:46:18.917119" level="INFO">Connect to DB using : sqlite3.connect(database='./my_database.db')</msg>
+<arg>db_module=sqlite3</arg>
+<arg>database=./my_database.db</arg>
+<doc>Creates a database connection using the DB API 2.0 ``db_module`` and the parameters provided.
+Along with listed commonly used arguments (`db_name`, `db_host` etc.)
+you can set any other DB module specific parameters as key/value pairs.</doc>
+<status status="PASS" start="2026-11-21T11:46:18.907886" elapsed="0.011260"/>
+</kw>
+<status status="PASS" start="2026-11-21T11:46:18.907345" elapsed="0.012041"/>
+</kw>
+<kw name="Save to Database">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-11-21T11:46:18.920968" level="INFO">${sql} = CREATE TABLE IF NOT EXISTS positions (posicao TEXT,nome TEXT,pontos TEXT,jogos TEXT,vitoria TEXT)</msg>
+<var>${sql}</var>
+<arg>CREATE TABLE IF NOT EXISTS positions (posicao TEXT,nome TEXT,pontos TEXT,jogos TEXT,vitoria TEXT)</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-11-21T11:46:18.920546" elapsed="0.000535"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:18.921540" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;CREATE TABLE IF NOT EXISTS positions (posicao TEXT,nome TEXT,pontos TEXT,jogos TEXT,vitoria TEXT)&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:18.922850" level="INFO">Commit the transaction</msg>
+<arg>${sql}</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:18.921277" elapsed="0.001730"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:18.923461" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;DELETE FROM positions&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.079653" level="INFO">Commit the transaction</msg>
+<arg>DELETE FROM positions</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:18.923221" elapsed="0.163812"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.090702" level="INFO">${posicao} = 1</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.089676" elapsed="0.001134"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.091923" level="INFO">${nome} = Flamengo</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.091285" elapsed="0.000770"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.093050" level="INFO">${pontos} = 79</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.092423" elapsed="0.000689"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.093802" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.093345" elapsed="0.000507"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.094802" level="INFO">${vitorias} = 24</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.094170" elapsed="0.000716"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.095828" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("1", "Flamengo", "79", "35", "24")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.097500" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.095141" elapsed="0.011149"/>
+</kw>
+<var name="${row}">{'posicao': '1', 'nome': 'Flamengo', 'pontos': '79', 'jogos': '35', 'vitoria': '24'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.088266" elapsed="0.018236"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.107955" level="INFO">${posicao} = 2</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.107307" elapsed="0.000704"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.108573" level="INFO">${nome} = Palmeiras</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.108213" elapsed="0.000405"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.109122" level="INFO">${pontos} = 73</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.108793" elapsed="0.000372"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.109662" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.109333" elapsed="0.000374"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.110208" level="INFO">${vitorias} = 21</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.109880" elapsed="0.000370"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.110797" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("2", "Palmeiras", "73", "35", "21")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.112194" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.110424" elapsed="0.011425"/>
+</kw>
+<var name="${row}">{'posicao': '2', 'nome': 'Palmeiras', 'pontos': '73', 'jogos': '35', 'vitoria': '21'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.106934" elapsed="0.015173"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.123238" level="INFO">${posicao} = 3</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.122888" elapsed="0.000392"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.124390" level="INFO">${nome} = Cruzeiro</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.123943" elapsed="0.000508"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.125179" level="INFO">${pontos} = 63</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.124821" elapsed="0.000398"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.125674" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.125388" elapsed="0.000324"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.126414" level="INFO">${vitorias} = 19</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.125928" elapsed="0.000532"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.127491" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("3", "Cruzeiro", "63", "35", "19")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.208083" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.126680" elapsed="0.108915"/>
+</kw>
+<var name="${row}">{'posicao': '3', 'nome': 'Cruzeiro', 'pontos': '63', 'jogos': '35', 'vitoria': '19'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.122599" elapsed="0.113158"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.236968" level="INFO">${posicao} = 4</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.236485" elapsed="0.000536"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.237566" level="INFO">${nome} = Fluminense</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.237226" elapsed="0.000383"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.238106" level="INFO">${pontos} = 60</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.237794" elapsed="0.000354"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.238786" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.238306" elapsed="0.000636"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.239713" level="INFO">${vitorias} = 17</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.239254" elapsed="0.000505"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.240362" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("4", "Fluminense", "60", "35", "17")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.241710" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.239942" elapsed="0.009647"/>
+</kw>
+<var name="${row}">{'posicao': '4', 'nome': 'Fluminense', 'pontos': '60', 'jogos': '35', 'vitoria': '17'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.236108" elapsed="0.013623"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.250936" level="INFO">${posicao} = 5</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.250462" elapsed="0.000528"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.251512" level="INFO">${nome} = Athletico-PR</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.251191" elapsed="0.000364"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.252032" level="INFO">${pontos} = 54</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.251724" elapsed="0.000349"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.252539" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.252235" elapsed="0.000347"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.253068" level="INFO">${vitorias} = 15</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.252742" elapsed="0.000369"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.253656" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("5", "Athletico-PR", "54", "35", "15")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.254971" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.253278" elapsed="0.007898"/>
+</kw>
+<var name="${row}">{'posicao': '5', 'nome': 'Athletico-PR', 'pontos': '54', 'jogos': '35', 'vitoria': '15'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.250103" elapsed="0.011264"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.262676" level="INFO">${posicao} = 6</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.262119" elapsed="0.000629"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.263530" level="INFO">${nome} = Bahia</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.263049" elapsed="0.000559"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.264247" level="INFO">${pontos} = 54</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.263868" elapsed="0.000423"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.264831" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.264472" elapsed="0.000403"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.265420" level="INFO">${vitorias} = 14</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.265080" elapsed="0.000382"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.266021" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("6", "Bahia", "54", "35", "14")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.267280" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.265636" elapsed="0.008686"/>
+</kw>
+<var name="${row}">{'posicao': '6', 'nome': 'Bahia', 'pontos': '54', 'jogos': '35', 'vitoria': '14'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.261746" elapsed="0.012756"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.275681" level="INFO">${posicao} = 7</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.275175" elapsed="0.000583"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.276534" level="INFO">${nome} = Atlético-MG</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.276034" elapsed="0.000563"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.277312" level="INFO">${pontos} = 51</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.276861" elapsed="0.000510"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.278093" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.277632" elapsed="0.000522"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.278849" level="INFO">${vitorias} = 14</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.278407" elapsed="0.000506"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.280120" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("7", "Atlético-MG", "51", "35", "14")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.281988" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.279235" elapsed="0.010175"/>
+</kw>
+<var name="${row}">{'posicao': '7', 'nome': 'Atlético-MG', 'pontos': '51', 'jogos': '35', 'vitoria': '14'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.274822" elapsed="0.014801"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.291318" level="INFO">${posicao} = 8</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.290634" elapsed="0.000771"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.292257" level="INFO">${nome} = Santos</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.291723" elapsed="0.000586"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.292895" level="INFO">${pontos} = 50</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.292516" elapsed="0.000416"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.293346" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.293076" elapsed="0.000305"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.293811" level="INFO">${vitorias} = 13</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.293555" elapsed="0.000290"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.294283" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("8", "Santos", "50", "35", "13")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.295507" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.293978" elapsed="0.008900"/>
+</kw>
+<var name="${row}">{'posicao': '8', 'nome': 'Santos', 'pontos': '50', 'jogos': '35', 'vitoria': '13'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.290232" elapsed="0.012833"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.303883" level="INFO">${posicao} = 9</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.303553" elapsed="0.000366"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.304346" level="INFO">${nome} = Bragantino</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.304066" elapsed="0.000315"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.304754" level="INFO">${pontos} = 47</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.304510" elapsed="0.000278"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.305391" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.304913" elapsed="0.000590"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.306400" level="INFO">${vitorias} = 13</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.305972" elapsed="0.000465"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.306903" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("9", "Bragantino", "47", "35", "13")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.308141" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.306587" elapsed="0.009253"/>
+</kw>
+<var name="${row}">{'posicao': '9', 'nome': 'Bragantino', 'pontos': '47', 'jogos': '35', 'vitoria': '13'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.303328" elapsed="0.012639"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.316836" level="INFO">${posicao} = 10</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.316413" elapsed="0.000468"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.317949" level="INFO">${nome} = Vasco</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.317116" elapsed="0.000921"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.319386" level="INFO">${pontos} = 47</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.318926" elapsed="0.000503"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.319918" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.319610" elapsed="0.000355"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.320358" level="INFO">${vitorias} = 13</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.320102" elapsed="0.000289"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.320825" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("10", "Vasco", "47", "35", "13")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.322123" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.320522" elapsed="0.008071"/>
+</kw>
+<var name="${row}">{'posicao': '10', 'nome': 'Vasco', 'pontos': '47', 'jogos': '35', 'vitoria': '13'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.316186" elapsed="0.012551"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.329536" level="INFO">${posicao} = 11</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.329200" elapsed="0.000374"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.329982" level="INFO">${nome} = São Paulo</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.329717" elapsed="0.000305"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.330419" level="INFO">${pontos} = 44</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.330156" elapsed="0.000298"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.334265" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.330586" elapsed="0.003733"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.334855" level="INFO">${vitorias} = 12</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.334504" elapsed="0.000388"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.335349" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("11", "São Paulo", "44", "35", "12")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.336566" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.335039" elapsed="0.007213"/>
+</kw>
+<var name="${row}">{'posicao': '11', 'nome': 'São Paulo', 'pontos': '44', 'jogos': '35', 'vitoria': '12'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.328962" elapsed="0.013426"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.343216" level="INFO">${posicao} = 12</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.342890" elapsed="0.000365"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.343656" level="INFO">${nome} = Botafogo</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.343395" elapsed="0.000297"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.344094" level="INFO">${pontos} = 42</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.343825" elapsed="0.000305"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.344516" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.344262" elapsed="0.000289"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.344967" level="INFO">${vitorias} = 11</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.344710" elapsed="0.000292"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.345445" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("12", "Botafogo", "42", "35", "11")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.346609" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.345144" elapsed="0.008792"/>
+</kw>
+<var name="${row}">{'posicao': '12', 'nome': 'Botafogo', 'pontos': '42', 'jogos': '35', 'vitoria': '11'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.342655" elapsed="0.011467"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.355092" level="INFO">${posicao} = 13</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.354731" elapsed="0.000402"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.355936" level="INFO">${nome} = Coritiba</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.355470" elapsed="0.000507"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.356427" level="INFO">${pontos} = 42</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.356139" elapsed="0.000324"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.356864" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.356610" elapsed="0.000288"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.357367" level="INFO">${vitorias} = 11</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.357025" elapsed="0.000412"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.358056" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("13", "Coritiba", "42", "35", "11")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.359344" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.357648" elapsed="0.007931"/>
+</kw>
+<var name="${row}">{'posicao': '13', 'nome': 'Coritiba', 'pontos': '42', 'jogos': '35', 'vitoria': '11'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.354429" elapsed="0.011342"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.367215" level="INFO">${posicao} = 14</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.366695" elapsed="0.000591"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.368124" level="INFO">${nome} = Vitória</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.367574" elapsed="0.000668"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.369394" level="INFO">${pontos} = 41</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.368597" elapsed="0.000884"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.370625" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.369885" elapsed="0.000835"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.371536" level="INFO">${vitorias} = 11</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.371087" elapsed="0.000492"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.372542" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("14", "Vitória", "41", "35", "11")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.373877" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.371764" elapsed="0.007732"/>
+</kw>
+<var name="${row}">{'posicao': '14', 'nome': 'Vitória', 'pontos': '41', 'jogos': '35', 'vitoria': '11'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.366206" elapsed="0.013470"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.380908" level="INFO">${posicao} = 15</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.380393" elapsed="0.000602"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.381870" level="INFO">${nome} = Mirassol</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.381306" elapsed="0.000650"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.383034" level="INFO">${pontos} = 41</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.382367" elapsed="0.000739"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.383933" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.383395" elapsed="0.000629"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.384850" level="INFO">${vitorias} = 10</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.384354" elapsed="0.000595"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.385851" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("15", "Mirassol", "41", "35", "10")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.387114" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.385215" elapsed="0.008934"/>
+</kw>
+<var name="${row}">{'posicao': '15', 'nome': 'Mirassol', 'pontos': '41', 'jogos': '35', 'vitoria': '10'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.380056" elapsed="0.014297"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.395616" level="INFO">${posicao} = 16</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.395086" elapsed="0.000600"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.396499" level="INFO">${nome} = Corinthians</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.395982" elapsed="0.000581"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.397369" level="INFO">${pontos} = 40</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.396827" elapsed="0.000627"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.398410" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.397781" elapsed="0.000719"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.399647" level="INFO">${vitorias} = 10</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.398976" elapsed="0.000747"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.400761" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("16", "Corinthians", "40", "35", "10")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.402432" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.400020" elapsed="0.008801"/>
+</kw>
+<var name="${row}">{'posicao': '16', 'nome': 'Corinthians', 'pontos': '40', 'jogos': '35', 'vitoria': '10'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.394697" elapsed="0.014289"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.410144" level="INFO">${posicao} = 17</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.409631" elapsed="0.000581"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.411022" level="INFO">${nome} = Internacional</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.410479" elapsed="0.000610"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.411867" level="INFO">${pontos} = 38</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.411363" elapsed="0.000569"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.412694" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.412190" elapsed="0.000568"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.413489" level="INFO">${vitorias} = 9</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.413007" elapsed="0.000545"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.414420" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("17", "Internacional", "38", "35", "9")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.415671" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.413817" elapsed="0.008295"/>
+</kw>
+<var name="${row}">{'posicao': '17', 'nome': 'Internacional', 'pontos': '38', 'jogos': '35', 'vitoria': '9'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.409312" elapsed="0.013003"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.423542" level="INFO">${posicao} = 18</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.423003" elapsed="0.000607"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.424369" level="INFO">${nome} = Grêmio</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.423856" elapsed="0.000591"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.425356" level="INFO">${pontos} = 38</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.424738" elapsed="0.000687"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.426197" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.425706" elapsed="0.000549"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.426938" level="INFO">${vitorias} = 9</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.426502" elapsed="0.000496"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.427891" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("18", "Grêmio", "38", "35", "9")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.429403" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.427241" elapsed="0.007634"/>
+</kw>
+<var name="${row}">{'posicao': '18', 'nome': 'Grêmio', 'pontos': '38', 'jogos': '35', 'vitoria': '9'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.422647" elapsed="0.012411"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.436301" level="INFO">${posicao} = 19</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.435784" elapsed="0.000597"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.437269" level="INFO">${nome} = Remo</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.436720" elapsed="0.000636"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.438119" level="INFO">${pontos} = 32</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.437649" elapsed="0.000526"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.439320" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.438530" elapsed="0.000875"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.440381" level="INFO">${vitorias} = 7</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.439749" elapsed="0.000782"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.441539" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("19", "Remo", "32", "35", "7")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.442993" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.440882" elapsed="0.007982"/>
+</kw>
+<var name="${row}">{'posicao': '19', 'nome': 'Remo', 'pontos': '32', 'jogos': '35', 'vitoria': '7'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.435401" elapsed="0.013661"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.450070" level="INFO">${posicao} = 20</msg>
+<var>${posicao}</var>
+<arg>${row}</arg>
+<arg>posicao</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.449538" elapsed="0.000602"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.450733" level="INFO">${nome} = Chapecoense</msg>
+<var>${nome}</var>
+<arg>${row}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.450343" elapsed="0.000453"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.451847" level="INFO">${pontos} = 21</msg>
+<var>${pontos}</var>
+<arg>${row}</arg>
+<arg>pontos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.451057" elapsed="0.000876"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.452811" level="INFO">${jogos} = 35</msg>
+<var>${jogos}</var>
+<arg>${row}</arg>
+<arg>jogos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.452232" elapsed="0.000663"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.453758" level="INFO">${vitorias} = 4</msg>
+<var>${vitorias}</var>
+<arg>${row}</arg>
+<arg>vitoria</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.453226" elapsed="0.000596"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2026-11-21T11:46:19.454616" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("20", "Chapecoense", "21", "35", "4")&lt;/code&gt;</msg>
+<msg time="2026-11-21T11:46:19.456054" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO positions (posicao, nome, pontos, jogos, vitoria) VALUES ("${posicao}", "${nome}", "${pontos}", "${jogos}", "${vitorias}")</arg>
+<doc>Executes the ``sql_string`` - as a single SQL command (default) or as separate statements.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.454119" elapsed="0.007471"/>
+</kw>
+<var name="${row}">{'posicao': '20', 'nome': 'Chapecoense', 'pontos': '21', 'jogos': '35', 'vitoria': '4'}</var>
+<status status="PASS" start="2026-11-21T11:46:19.449304" elapsed="0.012492"/>
+</iter>
+<var>${row}</var>
+<value>@{data}</value>
+<status status="PASS" start="2026-11-21T11:46:19.087326" elapsed="0.374605"/>
+</for>
+<arg>data=${response}</arg>
+<status status="PASS" start="2026-11-21T11:46:18.919988" elapsed="0.542184"/>
+</kw>
+<kw name="Connect Close">
+<kw name="Disconnect From Database" owner="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.463701" elapsed="0.001762"/>
+</kw>
+<status status="PASS" start="2026-11-21T11:46:19.462785" elapsed="0.002935"/>
+</kw>
+<kw name="Get From List" owner="Collections">
+<msg time="2026-11-21T11:46:19.467175" level="INFO">${first} = {'posicao': '1', 'nome': 'Flamengo', 'pontos': '79', 'jogos': '35', 'vitoria': '24'}</msg>
+<var>${first}</var>
+<arg>${response}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.466363" elapsed="0.000919"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-11-21T11:46:19.468526" level="INFO">${nome_primeiro} = Flamengo</msg>
+<var>${nome_primeiro}</var>
+<arg>${first}</arg>
+<arg>nome</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.467804" elapsed="0.000828"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Time em primeiro lugar:${nome_primeiro}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.469283" elapsed="0.001693"/>
+</kw>
+<msg time="2026-11-21T11:46:19.490943" level="INFO">Switching context to context=256ae8ad-6345-4de8-bfcc-b110769008c4 in CURRENT</msg>
+<msg time="2026-11-21T11:46:19.498689" level="INFO">Successfully changed active context: context=256ae8ad-6345-4de8-bfcc-b110769008c4</msg>
+<msg time="2026-11-21T11:46:19.634399" level="INFO">Successfully closed Context</msg>
+<status status="PASS" start="2026-11-21T11:45:51.544372" elapsed="27.927187"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-11-21T11:46:21.542866" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-11-21T11:46:19.664407" elapsed="1.878747"/>
+</kw>
+<status status="PASS" start="2026-11-21T11:45:48.611162" elapsed="32.932165"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="CampeonatoBrasileiro" id="s1" pass="1" fail="0" skip="0">CampeonatoBrasileiro</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
